@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Prado - Desenvolvedor Full Stack</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            font-size: 11px;
+        }
+        
+        .container {
+            max-width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            display: flex;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar {
+            width: 35%;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px 25px;
+        }
+        
+        .main-content {
+            width: 65%;
+            padding: 30px 35px;
+        }
+        
+        .profile-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #fff;
+            margin: 0 auto 20px;
+            background-image: url('https://via.placeholder.com/120x120/3498db/ffffff?text=Foto');
+            background-size: cover;
+            background-position: center;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .title {
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: #3498db;
+        }
+        
+        .sidebar .section-title:after {
+            background: white;
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 11px;
+        }
+        
+        .contact-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            opacity: 0.8;
+        }
+        
+        .skills-section {
+            margin-bottom: 30px;
+        }
+        
+        .skill-category {
+            margin-bottom: 20px;
+        }
+        
+        .skill-category h4 {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 9px;
+            font-weight: 500;
+        }
+        
+        .main-section {
+            margin-bottom: 25px;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .experience-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #3498db;
+        }
+        
+        .job-title, .course-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+        
+        .company, .institution {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        
+        .description {
+            font-size: 10px;
+            line-height: 1.5;
+            color: #555;
+        }
+        
+        .description ul {
+            margin: 8px 0;
+            padding-left: 15px;
+        }
+        
+        .description li {
+            margin-bottom: 3px;
+        }
+        
+        .languages {
+            margin-bottom: 25px;
+        }
+        
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 11px;
+        }
+        
+        .level {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 9px;
+        }
+        
+        .certifications {
+            margin-bottom: 25px;
+        }
+        
+        .cert-item {
+            margin-bottom: 8px;
+            font-size: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .cert-item:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: 700;
+        }
+        
+        .projects-highlight {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .project-item {
+            margin-bottom: 15px;
+        }
+        
+        .project-name {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        
+        .project-desc {
+            font-size: 10px;
+            color: #555;
+            line-height: 1.4;
+        }
+        
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-img"></div>
+                <h1 class="name">Lucas Prado</h1>
+                <p class="title">Desenvolvedor Full Stack</p>
+            </div>
+            
+            <div class="contact-info">
+                <h3 class="section-title">Contato</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <span>dev.lusxka@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <span>(11) 91102-9671</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🌐</span>
+                    <span>lucasryan.netlify.app</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">💼</span>
+                    <span>linkedin.com/in/lucas-prado-644061242</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>São Paulo, SP</span>
+                </div>
+            </div>
+            
+            <div class="skills-section">
+                <h3 class="section-title">Competências</h3>
+                
+                <div class="skill-category">
+                    <h4>Frontend</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">Bootstrap</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Backend</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">APIs REST</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Mobile & Outras</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Kotlin</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Jira</span>
+                        <span class="skill-tag">Bizagi</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="languages">
+                <h3 class="section-title">Idiomas</h3>
+                <div class="language-item">
+                    <span>Português</span>
+                    <span class="level">Nativo</span>
+                </div>
+                <div class="language-item">
+                    <span>Inglês</span>
+                    <span class="level">Intermediário</span>
+                </div>
+            </div>
+            
+            <div class="certifications">
+                <h3 class="section-title">Certificações</h3>
+                <div class="cert-item">JavaScript Avançado - Hashtag</div>
+                <div class="cert-item">Python para Automação - Hashtag</div>
+                <div class="cert-item">Desenvolvimento Mobile - Udemy</div>
+                <div class="cert-item">Git e Controle de Versão</div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="main-section">
+                <h2 class="section-title">Perfil Profissional</h2>
+                <p class="description">
+                    Desenvolvedor Full Stack autodidata com experiência prática comprovada em projetos comerciais reais. 
+                    Especializo-me em criar soluções completas do zero, com foco em tecnologias modernas como React, Node.js, 
+                    TypeScript e desenvolvimento mobile. Histórico sólido em ambientes críticos como hospitalar e setor público, 
+                    combinando visão técnica com entendimento das necessidades de negócio. Atualmente preparando a abertura da 
+                    empresa WebCash para soluções empresariais.
+                </p>
+            </div>
+            
+            <div class="main-section">
+                <h2 class="section-title">Experiência Profissional</h2>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Desenvolvedor Full Stack Freelancer</h3>
+                    <p class="company">WebCash (Em preparação) • 2023 - Presente</p>
+                    <div class="description">
+                        Desenvolvimento de soluções completas para clientes reais com contratos formais.
+                        <ul>
+                            <li><strong>D'Pazz Imports:</strong> E-commerce completo com sistema de pagamentos integrado, gestão de estoque e painel administrativo</li>
+                            <li><strong>DavidBarber:</strong> Plataforma de agendamento com integração WhatsApp para organização comunitária</li>
+                            <li>Domínio completo do ciclo: levantamento de requisitos, desenvolvimento, entrega e suporte pós-entrega</li>
+                            <li>Integrações avançadas: APIs de pagamento, WhatsApp Business, IA e automação</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Analista de Suporte Técnico</h3>
+                    <p class="company">Prevent Senior • 2022 - 2023</p>
+                    <div class="description">
+                        Suporte técnico especializado em ambiente hospitalar com sistemas críticos.
+                        <ul>
+                            <li>Reduzi em 70% o tempo médio de configuração das máquinas</li>
+                            <li>Implementei melhorias que aumentaram a eficiência da equipe</li>
+                            <li>Atendimento através do sistema Jira e documentação via Bizagi</li>
+                            <li>Desenvolvimento de automações para planilhas e configurações</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Técnico de TI - Rollout</h3>
+                    <p class="company">Prefeitura de São Caetano do Sul • 2021 - 2022</p>
+                    <div class="description">
+                        Modernização completa da infraestrutura de TI do setor público.
+                        <ul>
+                            <li>Rollout de 500+ computadores em 30 departamentos</li>
+                            <li>Implementação de soluções de segurança (redução de 60% nas vulnerabilidades)</li>
+                            <li>Coordenação de migração de dados sem perda de informações críticas</li>
+                            <li>Capacitação de 150+ funcionários públicos em novas tecnologias</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="projects-highlight">
+                <h2 class="section-title">Projetos em Destaque</h2>
+                
+                <div class="project-item">
+                    <h4 class="project-name">WebGym Beta</h4>
+                    <p class="project-desc">Plataforma de personal trainer online com IA integrada que gera treinos e dietas personalizadas automaticamente. Deploy: webgymbeta.netlify.app</p>
+                </div>
+                
+                <div class="project-item">
+                    <h4 class="project-name">WebCash Controller</h4>
+                    <p class="project-desc">Dashboard financeiro completo para controle de gastos e receitas empresariais. Deploy: webcashcontroller.netlify.app</p>
+                </div>
+                
+                <div class="project-item">
+                    <h4 class="project-name">DesapegaSenac</h4>
+                    <p class="project-desc">Aplicativo mobile desenvolvido em Kotlin para revenda entre estudantes universitários, facilitando o comércio interno.</p>
+                </div>
+                
+                <div class="project-item">
+                    <h4 class="project-name">Promoforia</h4>
+                    <p class="project-desc">Sistema de automação com web scraping para captura de ofertas e programa de afiliados integrado.</p>
+                </div>
+            </div>
+            
+            <div class="main-section">
+                <h2 class="section-title">Formação Acadêmica</h2>
+                
+                <div class="education-item">
+                    <h3 class="course-title">Desenvolvimento de Sistemas para Internet</h3>
+                    <p class="institution">SENAC • Em andamento</p>
+                    <div class="description">
+                        Formação focada em desenvolvimento web full stack, banco de dados, metodologias ágeis e arquitetura de software. 
+                        Principais matérias: Programação Web, Banco de Dados, Engenharia de Software, Segurança da Informação, Mobile Development.
+                    </div>
+                </div>
+                
+                <div class="education-item">
+                    <h3 class="course-title">Formação Autodidata Contínua</h3>
+                    <p class="institution">Projetos Práticos e Documentações Oficiais • Em andamento</p>
+                    <div class="description">
+                        Aprendizado através de implementação de soluções reais, participação em comunidades técnicas e busca por certificações AWS 
+                        para aprimoramento técnico constante.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
